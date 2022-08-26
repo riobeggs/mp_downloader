@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+    body{background-color:powderblue;font-family:Verdana;text-align:center;}
+
+    .loader {
+        border: 5px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 5px solid #3498db;
+        width: 30px;
+        height: 30px;
+        left: 49%;
+        top: auto;
+        position: fixed;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+</style>
+</head>
+
+<body>
+
+    {% if downloaded %}
+        <p style="color:lime">Successfully downloaded {{title}}.</p>
+    {% endif %}
+
+    {% if failed %}
+        <p style="color:tomato">Unavailable for download.</p>
+    {% endif %}
+
+    <form action="/", method="POST">
+        URL: <label for="url"></label><br>
+        <input type="text" name="url"><br>
+
+        <input type="submit" value="Download">
+      </form> 
+
+    <br>
+    
+    {% if loading %}
+        <div class="loader"></div>
+    {% endif %}
+
+</body>
+</html>
