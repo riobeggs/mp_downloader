@@ -5,7 +5,7 @@
 <style>
     body{background-color:powderblue;font-family:Verdana;text-align:center;}
 
-    .loader {
+    div#loading {
         border: 5px solid #f3f3f3;
         border-radius: 50%;
         border-top: 5px solid #3498db;
@@ -14,6 +14,8 @@
         left: 49%;
         top: auto;
         position: fixed;
+        display: none;
+        cursor: wait;
         -webkit-animation: spin 2s linear infinite; /* Safari */
         animation: spin 2s linear infinite;
         }
@@ -33,6 +35,7 @@
 </head>
 
 <body>
+    <div id="loading"></div>
 
     {% if downloaded %}
         <p style="color:lime">Successfully downloaded {{title}}.</p>
@@ -46,14 +49,10 @@
         URL: <label for="url"></label><br>
         <input type="text" name="url"><br>
 
-        <input type="submit" value="Download">
+        <input type="submit" value="Download" onclick="loading();">
       </form> 
 
     <br>
-    
-    {% if loading %}
-        <div class="loader"></div>
-    {% endif %}
 
 </body>
 </html>
